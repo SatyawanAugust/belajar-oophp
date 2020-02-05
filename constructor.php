@@ -29,7 +29,7 @@ $produk1 = new Produk("Wiro Sableng", "Ken Ken", "Kompas Gramedia", 55000);
 $produk2 = new Produk("Mario Bros", "Walt Disney", "Nintendo Corp", 150000);
 
 // membuat instance, namun hanya mengisi sebagian nilai properti
-$produk3 = new Produk("Dragon Ball")
+$produk3 = new Produk("Dragon Ball");
 
 // menampilkan hasil output
 echo "Komik : " . $produk1->getLabel();
