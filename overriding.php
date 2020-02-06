@@ -6,19 +6,15 @@ class Produk
     public $judul,
         $penulis,
         $penerbit,
-        $harga,
-        $jmlHalaman,
-        $waktuMain;
+        $harga;
 
     // membuat constructor dan mengisi nilai default property
-    public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $jmlHalaman = 0, $waktuMain = 0)
+    public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0)
     {
         $this->judul = $judul;
         $this->penulis = $penulis;
         $this->penerbit = $penerbit;
         $this->harga = $harga;
-        $this->jmlHalaman = $jmlHalaman;
-        $this->waktuMain = $waktuMain;
     }
 
     // membuat method
@@ -38,6 +34,14 @@ class Produk
 // membuat class komik yang merupakan child (mewarisi) dari class Produk
 class Komik extends Produk
 {
+    public $jmlHalaman;
+
+    public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $jmlHalaman = 0)
+    {
+        parent::__construct($judul, $penulis, $penerbit, $harga);
+        $this->jmlHalaman = $jmlHalaman;
+    }
+
     public function getInfoProduk()
     {
         // memanggil method getInfoProduk dari parent (line 31/33)
@@ -49,6 +53,13 @@ class Komik extends Produk
 // membuat class game yang merupakan child (mewarisi) dari class Produk
 class Game extends Produk
 {
+    public $waktuMain;
+
+    public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0, $waktuMain = 0)
+    {
+        parent::__construct($judul, $penulis, $penerbit, $harga);
+        $this->waktuMain = $waktuMain;
+    }
     public function getInfoProduk()
     {
         // memanggil method getInfoProduk dari parent (line 31/33)
@@ -68,14 +79,14 @@ class CetakInfoProduk
 }
 
 // membuat instance dan mengisi ulang nilai propertinya
-$produk1 = new Komik("Wiro Sableng", "Ken Ken", "Kompas Gramedia", 55000, 150, 0);
-$produk2 = new Game("Mario Bros", "Walt Disney", "Nintendo Corp", 150000, 0, 50);
-$produk3 = new Game("Asphalt 9", "Gameloft", "PlayStore", 99000, 0, 100);
+$produk1 = new Komik("Wiro Sableng", "Ken Ken", "Kompas Gramedia", 55000, 150);
+$produk2 = new Game("Mario Bros", "Walt Disney", "Nintendo Corp", 150000, 50);
+$produk3 = new Game("Asphalt 9", "Gameloft", "PlayStore", 99000, 100);
 
 // menampilkan hasil output
 echo "<h2>Komik</h2>";
 echo "<ol>";
-for ($i = 1; $i <= 5; $i++) {
+for ($i = 1; $i <= 3; $i++) {
     echo "<li>" . $produk1->getInfoProduk() . "</li>";
 }
 echo "</ol>";
